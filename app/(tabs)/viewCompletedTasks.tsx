@@ -4,9 +4,9 @@ import { useFocusEffect } from '@react-navigation/native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView, ThemedScrollView } from '@/components/ThemedView';
-import { Task } from '@/components/Task';
+import { ArchivedTask } from '@/components/ArchivedTask';
 
-import { getTasks, archiveTask } from '@/utils/AsyncStorage';
+import { getTasks, deleteTask } from '@/utils/AsyncStorage';
 
 export default function viewActiveTasksScreen() {
   // List of tasks being shown
@@ -14,13 +14,13 @@ export default function viewActiveTasksScreen() {
 
   // Retrieves the tasks from local storage and updates the list
   const updateTasks = async () => {
-    const tasks = await getTasks();
+    const tasks = await getTasks("archived");
     setTasks(tasks);
   };
 
-  // Archives a task when its clicked on and then updates the list
+  // Deletes a task when its clicked on and then updates the list
   const onPress = async (taskID: number) => {
-    await archiveTask(taskID);
+    await deleteTask(taskID);
     setTimeout(() => {
       updateTasks();
     }, 1000)
@@ -38,12 +38,12 @@ export default function viewActiveTasksScreen() {
   if (tasks.length === 0) {
     tasksArray = (
       <ThemedView style={styles.subtitleContainer}>
-        <ThemedText type="default">You have no active tasks!</ThemedText>
+        <ThemedText type="default">You have no completed tasks!</ThemedText>
       </ThemedView>
     )
   } else {
     tasksArray = tasks.map(task => (
-      <Task key={task[1]} text={task[0]} taskID={task[1]} onPress={onPress}/>
+      <ArchivedTask key={task[1]} text={task[0]} taskID={task[1]} onPress={onPress}/>
     ))
   }
 
@@ -52,10 +52,10 @@ export default function viewActiveTasksScreen() {
     <ThemedScrollView>
       <ThemedView style={styles.container}>
         <ThemedView style={styles.titleContainer}>
-          <ThemedText type="title">Active Tasks</ThemedText>
+          <ThemedText type="title">Completed Tasks</ThemedText>
         </ThemedView>
         <ThemedView style={styles.subtitleContainer}>
-          <ThemedText>View all active tasks below</ThemedText>
+          <ThemedText>View all completed tasks below</ThemedText>
         </ThemedView>
         {tasksArray}
       </ThemedView>

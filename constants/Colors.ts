@@ -14,6 +14,13 @@ export const Colors = {
     icon: '#687076',
     tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
+    taskBackground: '#e6f8fe',
+    taskOutline: '#0a7ea4',
+    checkboxColor: '#0a7ea4',
+    buttonColor: '#96e0f9',
+    buttonColorPressed: '#4ecbf4',
+    buttonColorDisabled: '#d2d3d2',
+    buttonColorPressedDisabled: '#d2d3d2'
   },
   dark: {
     text: '#ECEDEE',
@@ -22,5 +29,12 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+    taskBackground: '#36393e',
+    taskOutline: '#1e2124',
+    checkboxColor: 'grey',
+    buttonColor: '#0a7ea4',
+    buttonColorPressed: '#086482',
+    buttonColorDisabled: '#04313f',
+    buttonColorPressedDisabled: '#04313f'
   },
 };

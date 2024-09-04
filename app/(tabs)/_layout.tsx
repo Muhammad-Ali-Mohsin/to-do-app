@@ -17,18 +17,27 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Active Tasks',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'list' : 'list-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="createNewTask"
         options={{
-          title: 'Explore',
+          title: 'New Task',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'add-circle' : 'add-circle-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="viewCompletedTasks"
+        options={{
+          title: 'Completed Tasks',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'archive' : 'archive-outline'} color={color} />
           ),
         }}
       />
